@@ -1,0 +1,12 @@
+<mat-card class="example-card" *ngIf="cwit">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>{{cwit.authorName}}</mat-card-title>
+        <mat-card-subtitle>{{cwit.creationTime}}</mat-card-subtitle>
+        <img mat-card-sm-image src="{{cwit.url}}" >
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+     {{cwit.text}}
+    </mat-card-content>
+  </mat-card>

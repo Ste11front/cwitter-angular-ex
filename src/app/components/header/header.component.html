@@ -1,0 +1,31 @@
+
+<mat-toolbar>
+  <button mat-button [matMenuTriggerFor]="menu"><mat-icon> menu</mat-icon></button>
+  <mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="/login">Login</button>
+  <button mat-menu-item routerLink="/register">Register</button>
+  <button mat-menu-item routerLink="/user">Pagina Utente</button>
+</mat-menu>
+  <span routerLink="/home" class="home">Cwitter</span>
+  <span class="example-spacer"></span>
+
+  <form class="example-form">
+
+      <mat-label>Ricerca</mat-label>
+      <input type="search" placeholder="cerca un cwit">
+
+
+
+
+  </form>
+
+  <button mat-icon-button class="example-icon favorite-icon" *ngIf="user" (click)="logout()">
+    <mat-icon>logout</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" routerLink = "/login" *ngIf="!user">
+    <mat-icon>person</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" routerLink = "/register" *ngIf="!user">
+    <mat-icon>person_add</mat-icon>
+  </button>
+</mat-toolbar>

@@ -1,0 +1,46 @@
+<div  class="user-container" *ngIf="user">
+
+
+
+<mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{user.username}}</mat-card-title>
+      <mat-card-subtitle>{{user.email}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{user.url}}" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <ul>
+        <li>
+            {{user.gender}}
+        </li>
+        <li>
+            {{user.yob}}
+        </li>
+        <li>
+            {{user.country}}
+        </li>
+      </ul>
+    </mat-card-content>
+
+  </mat-card>
+
+
+<div *ngIf="userCwits">
+  <ul>
+    <li *ngFor="let cwit of userCwits">{{cwit.text}}</li>
+  </ul>
+
+
+
+
+  <div #postCwit>
+    <form [formGroup]="postCwitForm" (ngSubmit)="onSubmit(postCwitForm.value)">
+      <input formControlName="text" type="text" placeholder="Inserisci il tuo cwit">
+      <input formControlName="url" type="text" placeholder="Inserisci l'url">
+
+      <button type="submit">Invia</button>
+    </form>
+  </div>
+</div>
+

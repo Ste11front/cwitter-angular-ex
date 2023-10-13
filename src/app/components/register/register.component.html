@@ -1,0 +1,85 @@
+<div class="container">
+
+  <div class="form-container">
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="custom-form">
+
+      <div class="input-div">
+        <label for="username">Username:* </label>
+        <input id="username" type="text" formControlName="username" placeholder="username">
+      </div>
+      <div class="message-validation"
+        *ngIf="registerForm.get('username')?.hasError('invalidUsername') && registerForm.get('username')?.touched">
+        l'username deve avere minimo 3 caratteri
+      </div>
+      <div class="input-div">
+        <label for="email">Email:* </label>
+        <input id="email" type="email" formControlName="email" placeholder="exemple@exemple.it">
+      </div>
+
+
+      <div class="password-input input-div">
+        <label for="psw">Password*: </label>
+        <div class="show-password">
+          <input id="psw" [type]="showPassword ? 'text' : 'password'" formControlName="psw"
+            placeholder="Password">
+          <div>
+            <input type="checkbox" formControlName="showPassword" (change)="togglePasswordVisibility()"> Mostra password
+          </div>
+        </div>
+      </div>
+
+      <div class="message-validation"
+        *ngIf="registerForm.get('password')?.hasError('invalidPassword') && registerForm.get('password')?.touched">
+        La password deve contenere almeno una lettera maiuscola, un carattere speciale e avere una lunghezza minima di 8
+        caratteri.
+      </div>
+      <div class="message-validation"
+        *ngIf="registerForm.get('password')?.hasError('invalidKeyword') && registerForm.get('password')?.touched">
+        La password deve contenere una delle parole chiave: qui, quo o qua.
+      </div>
+
+
+      <div class="input-div">
+        <label for="url">Immagine profilo: </label>
+        <input id="url" type="text" formControlName="url">
+
+      </div>
+      <div class="input-div">
+        <label for="country">Paese: </label>
+        <input id="country" type="text" formControlName="country" placeholder="Es. Italia">
+      </div>
+      <div class="input-div"> <label for="gender">Genere: </label>
+        <select formControlName="gender">
+
+          <option value=""></option>
+          <option value="male">Uomo</option>
+          <option value="female">Donna</option>
+          <option value="other">Non mi riconosco in nessuno dei precedenti</option>
+
+        </select>
+
+      </div>
+
+      <div class="input-div">
+        <label for="yob">Anno di Nascita:* </label>
+        <input id="yob" type="number" formControlName="yob">
+ </div>
+        <div class="message-validation"
+          *ngIf="registerForm.get('yob')?.hasError('underAge') && registerForm.get('yob')?.touched">
+          Devi avere almeno 18 anni per registrarti.
+
+      </div>
+
+
+
+      <div class="button-container">
+        <button type="submit" [disabled]="!registerForm.valid">Submit</button>
+        <button type="reset">Reset</button>
+      </div>
+      <span class="ps-message">i campi con * sono obbligatori</span>
+    </form>
+
+  </div>
+
+</div>
